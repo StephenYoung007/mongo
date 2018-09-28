@@ -116,7 +116,9 @@ class Model(object):
             'id': self.id,
         }
         values = {
+            "$set":{
             'deleted': True,
+        }
         }
         stephen.db[name].update_one(query, values)
 

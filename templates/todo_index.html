@@ -20,7 +20,7 @@
         <!-- 注意这里 的 url_for 也是需要加上蓝图名字前缀的 -->
         <!-- action /todo/add-->
         <form action={{ url_for("todo.add") }} method="post">
-            <input type="text" placeholder="Add Todo" name="title">
+            <input type="text" placeholder="Add Todo" name="todo_content">
             <input class="pure-button pure-button-primary" type="submit" value="Add">
         </form>
     </div>
@@ -37,8 +37,8 @@
         <tbody>
         {% for t in todos %}
             <tr>
-                <td>{{ t.id }}</td>
-                <td>{{ t.title }}</td>
+                <td>{{ t.todo_id }}</td>
+                <td>{{ t.todo_content }}</td>
                 <td class="time">{{ t.ct }}</td>
                 <!-- url_for 可以传递参数，先匹配动态路由，如果动态路由匹配失败则变成 query 参数 -->
                 <td><a href={{ url_for('.delete', todo_id=t.id) }}>delete</a></td>

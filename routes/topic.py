@@ -56,7 +56,7 @@ def delete():
     if user_id == author_id:
         token = request.args.get('token', '')
         if token in csrf_tokens:
-            Topic.delete(id)
+            t.delete()
             t.reply_delete()
             csrf_tokens.remove(token)
             return redirect(url_for('.index'))

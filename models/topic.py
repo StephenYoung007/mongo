@@ -29,7 +29,7 @@ class Topic(Model):
     def reply_delete(self):
         ms = self.replies()
         for m in ms:
-            m.delete(m.id)
+            m.delete()
 
 
     def board(self):
