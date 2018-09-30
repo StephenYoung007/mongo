@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mail</title>
+</head>
+<body>
+<form method="post" action={{ url_for('.add') }}>
+<input type="text" name="content" placeholder="content">
+<input type="text" name="title" placeholder="title">
+<input type="text" name="receiver_id" placeholder="to_id">
+<button type="submit">提交邮件</button>
+</form>
+<p><h1>sended email</h1></p>
+<div>
+    {% for mail in sends %}
+        <a href={{ url_for('.view', id = mail.id) }} >{{ mail.title }}</a>
+    {% endfor %}
+</div>
+<p><h1>received email</h1></p>
+<div>
+    {% for mail in receives %}
+        <a href={{ url_for('.view', id = mail.id) }} >{{ mail.title }}</a>
+    {% endfor %}
+</div>
+
+</body>
+</html>

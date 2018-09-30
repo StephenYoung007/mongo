@@ -56,6 +56,7 @@ class Model(object):
         name = cls.__name__
         flag_sort = '__sort'
         sort = kwargs.pop(flag_sort, None)
+        # kwargs['deleted'] = False
         ds = stephen.db[name].find(kwargs)
         if sort is not None:
             ds = ds.sort(sort)
@@ -74,6 +75,10 @@ class Model(object):
 
     @classmethod
     def all(cls):
+        return cls._find(deleted=False)
+
+    @classmethod
+    def _all(cls):
         return cls._find()
 
 
@@ -166,7 +171,7 @@ class Model(object):
         return m
 
     def save(self):
-        models = self.all()
+        models = self._all()
         if self.id is None:
             if len(models) == 0:
                 self.id = 1
