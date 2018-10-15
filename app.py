@@ -19,6 +19,8 @@ from routes.board import main as board_routes
 app.register_blueprint(board_routes, url_prefix='/board')
 from routes.mail import main as mail_routes
 app.register_blueprint(mail_routes, url_prefix='/mail')
+from routes.drive import main as drive_routes
+app.register_blueprint(drive_routes, url_prefix='/drive')
 
 
 if __name__ == '__main__':

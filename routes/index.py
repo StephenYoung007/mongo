@@ -12,7 +12,8 @@ from flask import (
 from models.user import User
 from routes import *
 import os
-from config import user_file_directory
+from models.file import File
+from config import user_file_directory, data_file_directory
 
 from utilis import log
 
