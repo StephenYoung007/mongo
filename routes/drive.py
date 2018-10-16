@@ -30,7 +30,7 @@ def index():
 def file_upload():
     u = current_user()
     if u is None:
-        redirect(url_for(".profile"))
+        redirect(url_for("index.profile"))
 
     file = request.files['file']
     if file.filename == '':
@@ -44,6 +44,11 @@ def file_upload():
     f.type = filename.split('.')[-1]
     f.save()
     return redirect(url_for('.index'))
+
+
+@main.route("/download/<path:filename>")
+def downloader(filename):
+    return send_from_directory(data_file_directory, filename, as_attachment=True)
 
 
 @main.route('/all', methods=['Post'])
